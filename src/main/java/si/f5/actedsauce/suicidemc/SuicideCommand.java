@@ -1,5 +1,6 @@
 package si.f5.actedsauce.suicidemc;
 
+import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -13,7 +14,10 @@ public class SuicideCommand implements CommandExecutor {
                 return false;
             }
             Player player = (Player)commandSender;
+            final GameMode gamemode = player.getGameMode();
+            player.setGameMode(GameMode.ADVENTURE);
             player.damage(1000000000);
+            player.setGameMode(gamemode);
             return true;
         }
         return false;
